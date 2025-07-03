@@ -1,0 +1,8 @@
+{% extends 'main/base_layout.html' %}
+
+{% block content %}
+    <h1>Todo Details</h1>
+    <ul>
+        {{ task_id }} - {{ task_title }} - {{ task_description }}
+    </ul>
+{% endblock content %}

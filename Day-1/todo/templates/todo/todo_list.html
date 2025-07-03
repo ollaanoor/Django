@@ -1,0 +1,23 @@
+{% extends 'main/base_layout.html' %}
+
+{# override block title #}
+{% block title %}
+    Todo List
+{% endblock title %}
+
+{# override block content #}
+{% block content %}
+    <ul>
+        {% for task in tasks_list %}
+            <li>{{ task.title }} - {{ task.description }}</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
+
+{% block header %}
+    {% include 'base_templates/main/header.html' %}
+{% endblock header %}
+
+{% block footer %}
+    {% include 'base_templates/main/footer.html' %}
+{% endblock footer %}

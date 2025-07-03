@@ -1,0 +1,30 @@
+{% extends 'main/base_layout.html' %}
+
+{# override block title #}
+{% block title %}
+    Books List
+{% endblock title %}
+
+{# override block content #}
+{% block content %}
+    <h1>Books List</h1>
+    <a href="{% url 'bookstore:book-create' %}">Add New Book</a>
+    <ul>
+        {% for book in books_list %}
+        <li>
+            {{ book.title }} - {{ book.description }} - {{ book.author }}
+            <a href="{% url 'bookstore:book-details' book.id %}"> View</a>
+            <a href="{% url 'bookstore:book-update' book.id %}"> Update</a>
+            <a href="{% url 'bookstore:book-delete' book.id %}"> Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
+
+{% block header %}
+    {% include 'base_templates/main/header.html' %}
+{% endblock header %}
+
+{% block footer %}
+    {% include 'base_templates/main/footer.html' %}
+{% endblock footer %}
