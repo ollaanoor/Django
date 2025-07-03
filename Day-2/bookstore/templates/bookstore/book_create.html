@@ -1,0 +1,27 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/bookstore/style.css' %}" />
+<div class="">
+    <div class="">
+        <div class="">
+
+            <form method="post" action="{% url 'bookstore:book-create' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit" class="">Submit</button>
+                <div class="" style="display:inline">
+                    <a href="{% url 'bookstore:bookstore-index'%}">
+                        <button type="button" class="">
+                            Back to Books
+                        </button>
+                    </a>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
