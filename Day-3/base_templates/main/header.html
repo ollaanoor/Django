@@ -1,0 +1,36 @@
+<header style="
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+">
+  {% if user.is_authenticated %}
+  <form method="post" action="{% url 'signout' %}" style="
+      margin: 0;
+      padding: 0;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+  ">
+    {% csrf_token %}
+    <button type="submit" style="
+        all: unset;
+        padding: 8px 14px;
+        background-color: #dc3545;
+        color: white;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center;
+        border: 1px solid transparent;
+    "
+    onmouseover="this.style.backgroundColor='#b02a37'"
+    onmouseout="this.style.backgroundColor='#dc3545'">
+      Logout
+    </button>
+  </form>
+  {% endif %}
+</header>

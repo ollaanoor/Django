@@ -1,0 +1,37 @@
+{% extends 'main/base_layout.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'assets/bookstore/style.css' %}" />
+<h1>Books List</h1>
+<a class="add-book" href="{% url 'bookstore:book-create' %}">Add New Book</a>
+<table class="book-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Likes</th>
+      <th>Views</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for book in books %}
+    <tr>
+      <td>{{ book.title }}</td>
+      <td>{{ book.description }}</td>
+      <td>
+        {% for cat in book.categories.all %}
+            {{ cat.name }}  
+        {% endfor %}
+      </td>
+      <td>{{ book.likes }}</td>
+      <td>{{ book.views }}</td>
+      <td>
+        <a href="{% url 'bookstore:book-details' book.id %}">View</a> |
+        <a href="{% url 'bookstore:book-update' book.id %}">Update</a> |
+        <a href="{% url 'bookstore:book-delete' book.id %}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

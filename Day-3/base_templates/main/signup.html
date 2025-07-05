@@ -1,0 +1,15 @@
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/bookstore/style.css' %}">
+
+<form method="post">
+    <h2>Sign Up</h2>
+    {% csrf_token %}
+    {{ signup_form.as_p }}
+    <button type="submit">Sign Up</button>
+
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+</form>
+
+{% endblock %}

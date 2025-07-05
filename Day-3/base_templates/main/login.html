@@ -1,0 +1,30 @@
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'assets/bookstore/style.css' %}">
+<form method="POST" action="">
+    <h2>Login</h2>
+    {% csrf_token %}
+    <div class="">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" class="" required>
+    </div>
+    <div class="">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" class="" required>
+    </div>
+    <button type="submit" class="">Login</button>
+
+    {% for msg in messages %}
+    <p id ='messages'>{{msg}}</p>
+    {% endfor %}
+
+    <div class="">
+        <div class="">
+            Don't have an account? <a href="{% url 'signup' %}" class="">Sign Up</a>
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}
